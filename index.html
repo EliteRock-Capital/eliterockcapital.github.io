@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精石控股有限公司 | EliteRock Capital</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0b0f1a;
+    --card:#131829;
+    --gold:#c9a84c;
+    --gold-dim:#a78b2f;
+    --text:#e8e6e3;
+    --muted:#8b8fa3;
+    --rock:#3a3f52;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+    background:var(--bg);color:var(--text);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    padding:2rem;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 30%,rgba(201,168,76,.08),transparent),
+      radial-gradient(ellipse 80% 60% at 80% 80%,rgba(58,63,82,.25),transparent);
+    pointer-events:none;
+  }
+  /* subtle grid */
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+    background-size:64px 64px;
+    pointer-events:none;
+    opacity:.5;
+  }
+
+  /* logo mark – inline SVG rock/diamond */
+  .logo-mark{
+    width:72px;height:72px;
+    margin-bottom:2rem;
+    opacity:.92;
+  }
+
+  .hero h1{
+    font-size:clamp(2rem,5vw,3.2rem);
+    font-weight:700;
+    letter-spacing:.04em;
+    background:linear-gradient(135deg,#e8e6e3,#c9a84c);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero .en{
+    font-size:clamp(.85rem,2vw,1.05rem);
+    color:var(--gold-dim);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-top:.4rem;
+    font-weight:300;
+  }
+  .hero .tagline{
+    margin-top:1.4rem;
+    font-size:clamp(.95rem,2.2vw,1.15rem);
+    color:var(--muted);
+    max-width:520px;
+    font-weight:300;
+    letter-spacing:.03em;
+  }
+  .hero .scroll-hint{
+    position:absolute;bottom:2rem;
+    color:var(--muted);font-size:.75rem;
+    animation:bounce 2s infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ---- sections ---- */
+  section{
+    max-width:960px;
+    margin:0 auto;
+    padding:5rem 1.5rem;
+  }
+  .section-label{
+    display:inline-block;
+    font-size:.7rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+    border:1px solid rgba(201,168,76,.25);
+    padding:.25rem .9rem;
+    border-radius:2px;
+    margin-bottom:1.2rem;
+  }
+  h2{
+    font-size:clamp(1.4rem,3vw,2rem);
+    font-weight:600;
+    margin-bottom:1rem;
+    color:#f2f0ed;
+  }
+  p.lead{
+    color:var(--muted);
+    font-size:.95rem;
+    max-width:680px;
+  }
+
+  /* about */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.5rem;
+    margin-top:2.5rem;
+  }
+  .about-grid .card{
+    background:var(--card);
+    border:1px solid rgba(201,168,76,.08);
+    border-radius:12px;
+    padding:2rem;
+    transition:border-color .3s;
+  }
+  .about-grid .card:hover{border-color:rgba(201,168,76,.25)}
+  .card h3{
+    font-size:1.05rem;
+    color:var(--gold);
+    margin-bottom:.6rem;
+  }
+  .card p{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+  /* business */
+  .biz-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1.2rem;
+    margin-top:2rem;
+  }
+  .biz-item{
+    background:var(--card);
+    border:1px solid rgba(201,168,76,.06);
+    border-radius:10px;
+    padding:1.5rem 1.3rem;
+    font-size:.9rem;
+    color:var(--muted);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .biz-item:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 30px rgba(0,0,0,.3);
+  }
+  .biz-item strong{color:var(--text);display:block;margin-bottom:.3rem;font-size:.95rem}
+
+  /* philosophy */
+  .philo{
+    margin-top:2.5rem;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1rem;
+  }
+  .philo .p-item{
+    text-align:center;
+    padding:1.8rem 1rem;
+    background:var(--card);
+    border:1px solid rgba(201,168,76,.06);
+    border-radius:10px;
+  }
+  .p-item .icon{font-size:1.4rem;margin-bottom:.5rem;color:var(--gold)}
+  .p-item .label{font-size:.82rem;color:var(--muted);letter-spacing:.08em}
+  .p-item .val{font-size:1.05rem;font-weight:600;color:var(--text);margin-top:.2rem}
+
+  /* footer */
+  footer{
+    text-align:center;
+    padding:3rem 1.5rem 2rem;
+    color:var(--muted);
+    font-size:.8rem;
+    border-top:1px solid rgba(201,168,76,.06);
+  }
+  footer a{color:var(--gold-dim);text-decoration:none}
+  footer a:hover{color:var(--gold)}
+
+  /* responsive */
+  @media(max-width:640px){
+    .about-grid{grid-template-columns:1fr}
+    .philo{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========= HERO ========= -->
+<header class="hero" id="top">
+  <!-- Rock/Diamond mark – pure SVG, no external -->
+  <svg class="logo-mark" viewBox="0 0 72 72" fill="none">
+    <rect x="20" y="8" width="32" height="18" rx="2" fill="url(#g)" opacity=".7"/>
+    <polygon points="36,64 10,34 62,34" fill="url(#g)" opacity=".45"/>
+    <rect x="22" y="30" width="28" height="6" rx="1" fill="#c9a84c" opacity=".25"/>
+    <defs>
+      <linearGradient id="g" x1="20" y1="8" x2="52" y2="40" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#c9a84c"/><stop offset="1" stop-color="#3a3f52"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <h1>精石控股有限公司</h1>
+  <div class="en">EliteRock Capital</div>
+  <div class="tagline">厚德稳健 · 百年金融 — 具全球视野的资产管理机构与金融咨询服务商</div>
+  <div class="scroll-hint">↓ 向下滚动</div>
+</header>
+
+<!-- ========= ABOUT ========= -->
+<section id="about">
+  <span class="section-label">About</span>
+  <h2>关于精石</h2>
+  <p class="lead">
+    精石控股（EliteRock Capital）成立于 2017 年，总部位于杭州，是一家具有全球视野的资产管理机构及金融咨询服务提供商。公司以"精诚所至、金石为开"为信念，围绕中国资本市场深度布局，逐步拓展海外资产配置与企业跨国并购服务。
+  </p>
+  <div class="about-grid">
+    <div class="card">
+      <h3>团队与理念</h3>
+      <p>运营团队具备银行、证券等行业背景与资本运作经验，秉持"诚信、责任、稳健、创新"的核心价值，坚持价值投资，专注金融资本与产业资本的高效整合。</p>
+    </div>
+    <div class="card">
+      <h3>布局与愿景</h3>
+      <p>建立从资产端到资金端的完整产业链，通过内部板块互动与优势互补实现良好回报。以"厚德稳健，百年金融"为愿景，致力为高净值人群与中小企业提供全方位、个性化增值服务。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========= BUSINESS ========= -->
+<section id="business">
+  <span class="section-label">Business</span>
+  <h2>业务板块</h2>
+  <p class="lead">旗下拥有多家子公司，业务多元协同，覆盖境内外资产管理与咨询服务全链条。</p>
+  <div class="biz-list">
+    <div class="biz-item"><strong>股权投资</strong>成长期与成熟期企业股权投资，深度绑定产业资源</div>
+    <div class="biz-item"><strong>证券投资</strong>二级市场策略管理与配置</div>
+    <div class="biz-item"><strong>资产管理 &amp; 收购</strong>存量资产盘活与不良资产收购处置</div>
+    <div class="biz-item"><strong>供应链金融</strong>围绕核心企业的产业链金融服务</div>
+    <div class="biz-item"><strong>海外资产配置</strong>全球化视角下的跨境资产布局</div>
+    <div class="biz-item"><strong>企业咨询</strong>投资咨询、财务管理与跨国并购顾问</div>
+  </div>
+</section>
+
+<!-- ========= PHILOSOPHY ========= -->
+<section id="philosophy">
+  <span class="section-label">Philosophy</span>
+  <h2>核心价值</h2>
+  <div class="philo">
+    <div class="p-item">
+      <div class="icon">◆</div>
+      <div class="label">诚信</div>
+      <div class="val">Integrity</div>
+    </div>
+    <div class="p-item">
+      <div class="icon">◆</div>
+      <div class="label">责任</div>
+      <div class="val">Responsibility</div>
+    </div>
+    <div class="p-item">
+      <div class="icon">◆</div>
+      <div class="label">稳健</div>
+      <div class="val">Steadiness</div>
+    </div>
+    <div class="p-item">
+      <div class="icon">◆</div>
+      <div class="label">创新</div>
+      <div class="val">Innovation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer>
+  <p>精石控股有限公司 EliteRock Capital</p>
+  <p>杭州 · 西子国际中心 3 号楼丨info@jingshi518.com</p>
+  <p style="margin-top:.8rem">© 2026 EliteRock Capital. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
